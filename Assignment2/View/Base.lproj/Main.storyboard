@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2hV-dy-2er">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R7b-nb-j2Z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -11,7 +11,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Assignment2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="abc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Assignment2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,14 +19,17 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9bo-fg-RY4">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="TXE-l9-Yn8">
+                                <searchBar key="tableHeaderView" contentMode="redraw" text="" id="TXE-l9-Yn8">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="a5Z-49-Baj"/>
+                                    </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="112" id="suy-4O-k7r">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="112" id="suy-4O-k7r" customClass="UserTableViewCell" customModule="Assignment2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="414" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="suy-4O-k7r" id="p9G-0B-Rw7">
@@ -50,7 +53,7 @@
                                                     <state key="normal" title="View Details"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lz-oP-WB4">
-                                                    <rect key="frame" x="109" y="60" width="42" height="20.5"/>
+                                                    <rect key="frame" x="109" y="60" width="181" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -58,8 +61,18 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="userImg" destination="eHV-Dl-TKh" id="BHG-bI-MNL"/>
+                                            <outlet property="userName" destination="IXZ-ZG-cOg" id="xal-84-0i6"/>
+                                            <outlet property="userScore" destination="5lz-oP-WB4" id="O5o-IT-Rvf"/>
+                                            <outlet property="viewDetailsButton" destination="iZu-80-XEj" id="2pg-i7-XsU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="J5Z-qA-oLQ"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0Xe-Ax-0M2"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -72,15 +85,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="GWs-v2-HI8"/>
+                    <connections>
+                        <outlet property="searchBar" destination="TXE-l9-Yn8" id="qTS-j4-qeI"/>
+                        <outlet property="tableView" destination="9bo-fg-RY4" id="hbq-EE-Ied"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636.2318840579712" y="63.616071428571423"/>
+            <point key="canvasLocation" x="2546.376811594203" y="63.616071428571423"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="VXe-s9-HyJ">
             <objects>
-                <viewController id="9YM-zQ-7OE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9YM-zQ-7OE" customClass="DetailsViewController" customModule="Assignment2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e8T-8d-THD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,25 +155,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gfm-qR-Y8F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2349.275362318841" y="51.5625"/>
+            <point key="canvasLocation" x="3259.4202898550725" y="51.5625"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="wYq-yS-pVt">
+        <scene sceneID="6bq-bq-2X6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2hV-dy-2er" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R7b-nb-j2Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hQ9-Z7-9UH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rdW-Fm-Yx2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eEw-GT-zaJ"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BHC-fC-ubv"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hZj-TK-t2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dgO-ZZ-puT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726.08695652173924" y="63.616071428571423"/>
+            <point key="canvasLocation" x="1636.2318840579712" y="63.616071428571423"/>
         </scene>
     </scenes>
     <resources>
