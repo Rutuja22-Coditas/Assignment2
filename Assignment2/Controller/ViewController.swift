@@ -28,8 +28,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-    //completion : @escaping([User])->()
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gitUser.count
         //return 1
@@ -42,9 +40,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.userImg.kf.setImage(with: imgUrl)
         cell.userName.text = gitUser[indexPath.row].login
         cell.userScore.text = "\(gitUser[indexPath.row].score)"
+        cell.tapBlock = {
+            let newVC = self.storyboard?.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
+            newVC.repo_url = self.gitUser[indexPath.row].repos_url
+            newVC.name = self.gitUser[indexPath.row].login
+            newVC.image = self.gitUser[indexPath.row].avatar_url
+            self.navigationController?.pushViewController(newVC, animated: true)
+        }
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }

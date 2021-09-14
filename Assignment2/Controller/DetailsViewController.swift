@@ -1,29 +1,25 @@
-//
-//  DetailsViewController.swift
-//  Assignment2
-//
-//  Created by Coditas on 14/09/21.
-//
 
 import UIKit
+import Kingfisher
 
 class DetailsViewController: UIViewController {
-
+    @IBOutlet weak var detailsVCImg: UIImageView!
+    @IBOutlet weak var detailsVCNameLbl: UILabel!
+    @IBOutlet weak var repoNameLbl: UILabel!
+    @IBOutlet weak var repoDescriptionLbl: UILabel!
+    @IBOutlet weak var repoUrlLbl: UILabel!
+    @IBOutlet weak var languageLbl: UILabel!
+    @IBOutlet weak var startDateLbl: UILabel!
+    var repo_url:String = ""
+    var name :String = ""
+    var image : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        repoUrlLbl.text = repo_url
+        detailsVCNameLbl.text = name
+        detailsVCImg.kf.setImage(with: URL(string: image))
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }

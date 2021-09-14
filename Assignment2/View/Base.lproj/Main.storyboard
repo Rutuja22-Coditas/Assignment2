@@ -51,6 +51,9 @@
                                                     <rect key="frame" x="298" y="41" width="96" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="View Details"/>
+                                                    <connections>
+                                                        <action selector="viewDetailsButtonPressed:" destination="suy-4O-k7r" eventType="touchUpInside" id="p0a-kT-Pcj"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lz-oP-WB4">
                                                     <rect key="frame" x="109" y="60" width="181" height="21"/>
@@ -65,7 +68,6 @@
                                             <outlet property="userImg" destination="eHV-Dl-TKh" id="BHG-bI-MNL"/>
                                             <outlet property="userName" destination="IXZ-ZG-cOg" id="xal-84-0i6"/>
                                             <outlet property="userScore" destination="5lz-oP-WB4" id="O5o-IT-Rvf"/>
-                                            <outlet property="viewDetailsButton" destination="iZu-80-XEj" id="2pg-i7-XsU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -106,13 +108,6 @@
                                 <rect key="frame" x="20" y="63" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fN-un-1fT">
-                                <rect key="frame" x="167" y="63" width="218" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repository name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiG-f6-wV2">
                                 <rect key="frame" x="20" y="220" width="374" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -148,10 +143,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fN-un-1fT">
+                                <rect key="frame" x="161" y="90" width="218" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Jv-P9-ZUR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="detailsVCImg" destination="SOv-4j-iIk" id="qQa-FL-x6f"/>
+                        <outlet property="detailsVCNameLbl" destination="6fN-un-1fT" id="hlD-5V-aO1"/>
+                        <outlet property="languageLbl" destination="FQ1-jP-BjL" id="FQK-g3-JqP"/>
+                        <outlet property="repoDescriptionLbl" destination="bcd-gK-xdB" id="bEU-wj-PSe"/>
+                        <outlet property="repoNameLbl" destination="eiG-f6-wV2" id="N2A-Te-UKQ"/>
+                        <outlet property="repoUrlLbl" destination="kBs-9L-XTY" id="Z0I-uU-pg3"/>
+                        <outlet property="startDateLbl" destination="ddn-jc-rLH" id="WTb-mw-sJv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gfm-qR-Y8F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
