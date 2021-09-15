@@ -8,49 +8,48 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var repoNameLbl: UILabel!
     @IBOutlet weak var repoDescriptionLbl: UILabel!
     @IBOutlet weak var repoUrlLbl: UILabel!
+    @IBOutlet weak var createdOnLbl: UILabel!
     @IBOutlet weak var languageLbl: UILabel!
-    @IBOutlet weak var startDateLbl: UILabel!
+    
     var usersViewModel = UsersViewModel()
-    var a = ""
-    var repo_url:String = ""
-    var name :String = ""
-    var image : String = ""
+    var user:[User]?
+    var repoUser : [Repo]?
+    var idValue:Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        repoUrlLbl.text = repo_url
-        detailsVCNameLbl.text = name
-        detailsVCImg.kf.setImage(with: URL(string: image))
         
-        
-        let text = name
-        parseRepoUrl(query: text)
-            //gitUser = []
+        details(detail: user![idValue!])
+        User(detail: repoUser![idValue!])
+        //let text = name
 //        usersViewModel.parseRepoUrl(query: text) { (data) in
-//            self.a = self.description
+//            self.repoUser = data
 //        }
-            
+//        self.usersViewModel.parseRepoUrl(query: text) { (data) in
+//                self.repoUser = data
+//            print("repoUser!",self.repoUser!)
+//            //self.repoNameLbl.text = self.repoUser![self.idValue!].name
+//        }
+        
+        self.detailsVCImg.layer.cornerRadius = self.detailsVCImg.frame.size.width/2
+        self.detailsVCImg.clipsToBounds = true
+        
         }
-    func parseRepoUrl(query : String){
-           let url = "https://api.github.com/users/\(query)/repos"
-           if let url = URL(string: url){
-               URLSession.shared.dataTask(with: url) { (data, response, error) in
-               if error == nil{
-                       do{
-                           let SharedUrlSession = try JSONDecoder().decode([Repo].self, from: data!)
-   //                        self.description.append(SharedUrlSession.description)
-   //                        completion(SharedUrlSession.self)
-                       
-                        print(SharedUrlSession[0].name)
-                        }
-                       
-                       catch{
-                           print(error)
-                       }
-                   }
-               }.resume()
-           }
-       }
+
+    func details(detail : User){
+        repoUrlLbl.text = detail.repos_url
+        detailsVCNameLbl.text = detail.login
+        detailsVCImg.kf.setImage(with: URL(string: detail.avatar_url))
     }
+    
+    func User(detail : Repo){
+        repoDescriptionLbl.text = detail.description
+        repoNameLbl.text = detail.name
+        languageLbl.text = detail.language
+        createdOnLbl.text = detail.created_at
+    }
+    
+}
     
    
 

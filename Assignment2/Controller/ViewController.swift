@@ -9,13 +9,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var usersViewModel = UsersViewModel()
     var gitUser = [User]()
-    
+    var repo_url = [Repo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
-
     func searchBarSearchButtonClicked(_ searchBar:UISearchBar){
         if let text = searchBar.text{
             gitUser = []
@@ -26,8 +25,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.tableView.reloadData()
                     }
             }
+            repo_url = []
+            self.usersViewModel.parseRepoUrl(query: text) { (data) in
+                    self.repo_url = data
+            }
         }
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gitUser.count
         //return 1
@@ -40,19 +44,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.userImg.kf.setImage(with: imgUrl)
         cell.userName.text = gitUser[indexPath.row].login
         cell.userScore.text = "\(gitUser[indexPath.row].score)"
-        cell.tapBlock = {
+        cell.tapBlock = { [self] in
             let newVC = self.storyboard?.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
-            newVC.repo_url = self.gitUser[indexPath.row].repos_url
-            newVC.name = self.gitUser[indexPath.row].login
-            newVC.image = self.gitUser[indexPath.row].avatar_url
+            newVC.idValue = indexPath.row
+            newVC.user = self.gitUser
+            newVC.repoUser = self.repo_url
+            
             self.navigationController?.pushViewController(newVC, animated: true)
         }
-        
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-
+    func showAlert(){
+        let alert = UIAlertController(title: "Error!", message: "No Results Found", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
+        }))
+        present(alert, animated: true)
+    }
 }
