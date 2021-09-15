@@ -1,9 +1,4 @@
-//
-//  User.swift
-//  Assignment2
-//
-//  Created by Coditas on 14/09/21.
-//
+
 
 import Foundation
 
@@ -19,4 +14,11 @@ struct User:Decodable {
     var url : String
     var repos_url : String
     var score : Float
+}
+
+struct Repo:Decodable{
+    var description : String
+    var language : String
+    var created_at : String
+    var name : String
 }
