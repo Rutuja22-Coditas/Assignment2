@@ -21,9 +21,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableView.reloadData()
                 self.usersViewModel.parseJsonUrl(query: text) { (data) in
                     self.gitUser = data
+//
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
+            }
+            if self.gitUser.count == 0{
+                self.showAlert()
             }
             repo_url = []
             self.usersViewModel.parseRepoUrl(query: text) { (data) in
