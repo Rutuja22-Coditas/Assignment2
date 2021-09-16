@@ -15,40 +15,44 @@ class DetailsViewController: UIViewController {
     var user:[User]?
     var repoUser : [Repo]?
     var idValue:Int?
+    var name : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         details(detail: user![idValue!])
-        User(detail: repoUser![idValue!])
-        //let text = name
-//        usersViewModel.parseRepoUrl(query: text) { (data) in
-//            self.repoUser = data
-//        }
-//        self.usersViewModel.parseRepoUrl(query: text) { (data) in
-//                self.repoUser = data
-//            print("repoUser!",self.repoUser!)
-//            //self.repoNameLbl.text = self.repoUser![self.idValue!].name
-//        }
+//
+        let text = name
+        self.usersViewModel.parseRepoUrl(query: text) { (data) in
+                self.repoUser = data
+            print("repoUser!",self.repoUser!)
+            DispatchQueue.main.async {
+                self.detail(indexpath: self.idValue!)
+            }
+                
+            
+            
+            //self.repoNameLbl.text = self.repoUser![self.idValue!].name
+        }
+        
         
         self.detailsVCImg.layer.cornerRadius = self.detailsVCImg.frame.size.width/2
         self.detailsVCImg.clipsToBounds = true
         
         }
-
+    
     func details(detail : User){
         repoUrlLbl.text = detail.repos_url
         detailsVCNameLbl.text = detail.login
         detailsVCImg.kf.setImage(with: URL(string: detail.avatar_url))
     }
-    
-    func User(detail : Repo){
-        repoDescriptionLbl.text = detail.description
-        repoNameLbl.text = detail.name
-        languageLbl.text = detail.language
-        createdOnLbl.text = detail.created_at
+    func detail(indexpath:Int){
+        languageLbl.text = repoUser![indexpath].language
+        repoDescriptionLbl.text = repoUser![indexpath].description
+        repoNameLbl.text = repoUser![indexpath].name
+        createdOnLbl.text = repoUser![indexpath].created_at
     }
-    
+
 }
     
    

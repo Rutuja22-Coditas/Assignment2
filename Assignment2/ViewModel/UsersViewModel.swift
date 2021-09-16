@@ -33,6 +33,7 @@ class UsersViewModel {
                         let sharedUrlSession = try JSONDecoder().decode([Repo].self, from: data!)
                         self.repo_user = sharedUrlSession
                         completion(sharedUrlSession)
+                        //print("sharedUrlSession",sharedUrlSession)
                         //print(SharedUrlSession[0].name)
                         }
                        catch{

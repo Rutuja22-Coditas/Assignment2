@@ -21,19 +21,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableView.reloadData()
                 self.usersViewModel.parseJsonUrl(query: text) { (data) in
                     self.gitUser = data
-//
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
             }
-            if self.gitUser.count == 0{
-                self.showAlert()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.9){
+                if self.gitUser.count == 0{
+                    self.showAlert()
+                }
             }
-            repo_url = []
-            self.usersViewModel.parseRepoUrl(query: text) { (data) in
-                    self.repo_url = data
-            }
+   //         repo_url = []
+//            self.usersViewModel.parseRepoUrl(query: text) { (data) in
+//                    self.repo_url = data
+//                print(self.repo_url)
+//            }
         }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,9 +55,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.tapBlock = { [self] in
             let newVC = self.storyboard?.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
             newVC.idValue = indexPath.row
+            print(indexPath.row)
             newVC.user = self.gitUser
-            newVC.repoUser = self.repo_url
-            
+            //newVC.repoUser = self.repo_url
+            newVC.name = self.gitUser[indexPath.row].login
             self.navigationController?.pushViewController(newVC, animated: true)
         }
         return cell
