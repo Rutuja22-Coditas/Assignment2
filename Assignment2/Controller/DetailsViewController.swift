@@ -29,8 +29,6 @@ class DetailsViewController: UIViewController {
             DispatchQueue.main.async {
                 self.detail(indexpath: self.idValue!)
             }
-                
-            
             
             //self.repoNameLbl.text = self.repoUser![self.idValue!].name
         }
