@@ -19,8 +19,9 @@ struct RepoList: Decodable{
     var itemsInRepo : [Repo]
 }
 struct Repo:Decodable{
-    var description : String? 
-    var language : String? 
-    var created_at : String?
     var name : String?
+    var description : String?
+    var language : String?
+    var created_at : String?
+    
 }

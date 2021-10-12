@@ -16,7 +16,9 @@
 		7E99B80E26EFD2B700F3CAE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E99B80D26EFD2B700F3CAE1 /* User.swift */; };
 		7E99B81226EFD34300F3CAE1 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E99B81126EFD34300F3CAE1 /* UsersViewModel.swift */; };
 		7E99B81526EFDEA200F3CAE1 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E99B81426EFDEA200F3CAE1 /* UserTableViewCell.swift */; };
-		7E99B81826EFE8BF00F3CAE1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E99B81726EFE8BF00F3CAE1 /* DetailsViewController.swift */; };
+		7E9F4079270F188C0071EC0F /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9F4078270F188C0071EC0F /* RepoDetailsViewController.swift */; };
+		7E9F407C270F18F10071EC0F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9F407A270F18F10071EC0F /* TableViewCell.swift */; };
+		7E9F407D270F18F10071EC0F /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E9F407B270F18F10071EC0F /* TableViewCell.xib */; };
 		8DE2E93C004E173E74B2E649 /* Pods_Assignment2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AF87F480A57985DF5AAD60 /* Pods_Assignment2.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +36,9 @@
 		7E99B80D26EFD2B700F3CAE1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7E99B81126EFD34300F3CAE1 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		7E99B81426EFDEA200F3CAE1 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		7E99B81726EFE8BF00F3CAE1 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		7E9F4078270F188C0071EC0F /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
+		7E9F407A270F18F10071EC0F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		7E9F407B270F18F10071EC0F /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		F0AF87F480A57985DF5AAD60 /* Pods_Assignment2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Assignment2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,8 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				7E635EFD26E8CEDA00528C0D /* ViewController.swift */,
-				7E99B81726EFE8BF00F3CAE1 /* DetailsViewController.swift */,
-				7E99B81426EFDEA200F3CAE1 /* UserTableViewCell.swift */,
+				7E9F4078270F188C0071EC0F /* RepoDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -106,6 +109,9 @@
 				7E99B80A26EFD27F00F3CAE1 /* Model */,
 				7E635F0226E8CEE800528C0D /* Assets.xcassets */,
 				7E635F0726E8CEE800528C0D /* Info.plist */,
+				7E9F407A270F18F10071EC0F /* TableViewCell.swift */,
+				7E9F407B270F18F10071EC0F /* TableViewCell.xib */,
+				7E99B81426EFDEA200F3CAE1 /* UserTableViewCell.swift */,
 			);
 			path = Assignment2;
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E635F0626E8CEE800528C0D /* LaunchScreen.storyboard in Resources */,
+				7E9F407D270F18F10071EC0F /* TableViewCell.xib in Resources */,
 				7E635F0326E8CEE800528C0D /* Assets.xcassets in Resources */,
 				7E635F0126E8CEDA00528C0D /* Main.storyboard in Resources */,
 			);
@@ -252,8 +259,9 @@
 				7E99B80E26EFD2B700F3CAE1 /* User.swift in Sources */,
 				7E635EFE26E8CEDA00528C0D /* ViewController.swift in Sources */,
 				7E635EFA26E8CEDA00528C0D /* AppDelegate.swift in Sources */,
+				7E9F407C270F18F10071EC0F /* TableViewCell.swift in Sources */,
 				7E635EFC26E8CEDA00528C0D /* SceneDelegate.swift in Sources */,
-				7E99B81826EFE8BF00F3CAE1 /* DetailsViewController.swift in Sources */,
+				7E9F4079270F188C0071EC0F /* RepoDetailsViewController.swift in Sources */,
 				7E99B81526EFDEA200F3CAE1 /* UserTableViewCell.swift in Sources */,
 				7E99B81226EFD34300F3CAE1 /* UsersViewModel.swift in Sources */,
 			);
@@ -404,7 +412,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Assignment2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -423,7 +433,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Assignment2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

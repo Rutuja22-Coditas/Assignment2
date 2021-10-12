@@ -5,6 +5,8 @@ class UsersViewModel {
     var gitUser : [User] = []
     var repo_user : [Repo] = []
     //completion : @escaping([User])->(),
+    
+    
     func parseJsonUrl( query : String, completion : @escaping([User])->()){
         let url = "https://api.github.com/search/users?q=\(query)&per_page=20"
         if let url = URL(string: url){
@@ -14,7 +16,7 @@ class UsersViewModel {
                         let SharedUrlSession = try JSONDecoder().decode(Users.self, from: data!)
                         self.gitUser = SharedUrlSession.items
                         completion(SharedUrlSession.items)
-                        //print(self.gitUser)
+                        print(self.gitUser)
                         }
                     catch{
                         print(error)

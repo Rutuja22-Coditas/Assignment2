@@ -30,19 +30,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.showAlert()
                 }
             }
-   //         repo_url = []
-//            self.usersViewModel.parseRepoUrl(query: text) { (data) in
-//                    self.repo_url = data
-//                print(self.repo_url)
-//            }
+            repo_url = []
+            self.usersViewModel.parseRepoUrl(query: text) { (data) in
+                    self.repo_url = data
+            }
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gitUser.count
-        //return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,15 +48,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.userImg.kf.setImage(with: imgUrl)
         cell.userName.text = gitUser[indexPath.row].login
         cell.userScore.text = "\(gitUser[indexPath.row].score)"
+        
         cell.tapBlock = { [self] in
-            let newVC = self.storyboard?.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
-            newVC.idValue = indexPath.row
-            print(indexPath.row)
-            newVC.user = self.gitUser
-            //newVC.repoUser = self.repo_url
-            newVC.name = self.gitUser[indexPath.row].login
-            self.navigationController?.pushViewController(newVC, animated: true)
-        }
+                let newVC = self.storyboard?.instantiateViewController(identifier: "RepoDetailsViewController") as! RepoDetailsViewController
+                newVC.idValue = indexPath.row
+                print(indexPath.row)
+                newVC.user = self.gitUser
+                newVC.repoUser = self.repo_url
+                self.navigationController?.pushViewController(newVC, animated: true)
+                }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
